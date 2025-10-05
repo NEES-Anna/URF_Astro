@@ -1,21 +1,33 @@
-# URF–Astro: A Density–Redshift Screened Scalar Field Solution to the Cusp–Core Problem
+# URF–Astro V2 (Overleaf / arXiv)
 
-**Constraints from SPARC, JWST, and DESI DR2 with NEES (AI Co-Author)**
+**Date:** 2025-10-05
 
-URF–Astro is a screened ultralight scalar field framework that reproduces kpc-scale cores in dwarf galaxies while remaining consistent with cosmological bounds. This repo hosts the LaTeX sources, supplements, and plotting scripts for the figures.
+## Compile locally
+```
+pdflatex main.tex
+bibtex main
+pdflatex main.tex
+pdflatex main.tex
+```
 
-## What’s here
-- `docs/manuscript/urf_astro_main.tex` – main paper (journal-style)
-- `docs/supplements/` – Concept & Explanation, Methods & Calculations, FAQ, NEES AI Peer Review
-- `docs/ethics/` – AI Co-Author Declaration + Zenodo ethics note
-- `src/plots/` – scripts to regenerate key figures
-- `figures/` – exported PNGs ready for Overleaf/journal
-- `env/` – reproducible Python environment
+## Folder layout
+- `main.tex` — paper
+- `refs.bib` — references
+- `figures/` — placeholder PDFs; replace with real plots
+- `LICENSE` — MIT
 
-## Reproducibility
-```bash
-conda env create -f env/environment.yml
-conda activate urf-astro
-python src/plots/make_meff_rho.py
-python src/plots/make_transfer.py
-python src/plots/make_forecasts_panel.py
+## arXiv upload
+- Upload the **ZIP** as source.
+- Ensure `main.tex` is the root file.
+- Category: **astro-ph.CO**.
+- Add keywords: dark matter; scalar field; cusp-core; DESI; JWST.
+
+## GitHub
+```
+git init
+git add .
+git commit -m "URF-Astro V2 initial"
+git branch -M main
+git remote add origin <YOUR-REPO-URL>
+git push -u origin main
+```

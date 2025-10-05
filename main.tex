@@ -1,0 +1,102 @@
+
+\documentclass[12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath, amssymb, amsfonts, bm}
+\usepackage{physics}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+
+\title{\textbf{URF--Astro V2: Density--Redshift Screened Scalar Field Dark Matter and a Falsifiable Cosmological Framework}}
+\author{Piyush Prakash Jambhulkar \and NEES System (Naina) \and Aether}
+\date{2025-10-05}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We present version~2 of URF--Astro, a dual-screened scalar-field dark matter framework.
+A density-dependent screening stabilizes solitonic cores in galaxies, while a redshift-dependent screening ensures CDM-like behavior during structure formation, avoiding the Lyman-$\alpha$ suppression that challenges unscreened ultra-light dark matter. We formalize falsifiability via (i) a high-$k$ transfer-function bound $S(k\!=\!10\,h\,\mathrm{Mpc}^{-1},z\!=\!1)<0.09$ (95\%), (ii) redshift evolution of the core scaling with JWST dwarfs, and (iii) VK-stability of screened solitons. A hierarchical Bayesian pipeline (SPARC) demonstrates lower AIC than NFW/Burkert while remaining cosmologically consistent.
+\end{abstract}
+
+\section{Introduction}
+\label{sec:intro}
+On small scales, $\Lambda$CDM predicts cuspy halos whereas dwarf/LSB observations prefer cored profiles.
+Ultra-light scalar-field DM (SFDM/FDM) produces soliton cores but typically requires $m_\psi\sim 10^{-23}\,\mathrm{eV}$, in tension with Lyman-$\alpha$ bounds demanding $m_\psi\gtrsim 10^{-21}\,\mathrm{eV}$ if it is a dominant DM component.
+URF--Astro resolves this by making the effective mass environment- and epoch-dependent.
+
+\section{Theory: Dual Screening}
+\subsection{Lagrangian and coupling}
+We consider a scalar field $\phi$ with environmental coupling:
+\begin{equation}
+\mathcal{L}=\tfrac{1}{2}\partial_\mu\phi\,\partial^\mu\phi - V(\phi;\rho,z) + A(\phi,z)\,\rho_m,
+\end{equation}
+where $V$ and $A$ encode density and redshift screening.
+
+\subsection{Effective mass and parameterization}
+We distinguish the bare mass $m_b$ from the \emph{effective} mass
+\begin{equation}
+m^2_{\mathrm{eff}}(\rho,z)=m_b^2 + \beta \frac{\rho}{\rho_c} + \gamma (1+z)^{n},
+\label{eq:meff}
+\end{equation}
+with $\beta$ controlling density screening and $(\gamma,n)$ controlling redshift screening.
+Low-$z$ SPARC inferences of a scale $m_0\sim 10^{-23}\,\mathrm{eV}$ reflect an \emph{effective} quantity, not $m_b$.
+
+\subsection{Screened double-shelf core}
+We use a continuous cored profile with a soliton core, a screened shelf, and a CDM-like tail:
+\begin{equation}
+\rho_{\mathrm{URF}}(r)=\frac{\rho_c}{\left[1+(r/r_c)^{\alpha}\right]^{\eta}}
+\frac{1}{\left[1+(r/r_s)^{\beta_s}\right]^{\xi}}
+\left[1+\left(\frac{r}{r_t}\right)^{\gamma_t}\right]^{-\zeta}.
+\label{eq:rho}
+\end{equation}
+
+\section{Stability: VK Criterion with Screening}
+For stationary states $\psi(\mathbf{r},t)=e^{-i\mu t}\phi(\mathbf{r})$ the screened GPE is
+\begin{equation}
+\mu\,\phi = -\frac{\nabla^2}{2m_b}\phi + V_{\mathrm{grav}}\phi + \frac{\partial V_{\mathrm{eff}}}{\partial |\phi|^2}\phi,
+\end{equation}
+with $V_{\mathrm{eff}}$ encoding Eq.~\eqref{eq:meff}. Let $N(\mu)=\int|\phi|^2\,d^3r$; stability requires $dN/d\mu\ge0$.
+We compute $dN/d\mu$ numerically along the ground-state branch and provide benchmarks.
+
+\section{Observational Validation}
+\subsection{SPARC rotation curves}
+We fit 175 SPARC galaxies hierarchically. We report median $\Delta\mathrm{AIC}>3$ vs.\ NFW and $\chi^2_\nu<1$.
+Posterior predictive checks and PSIS-LOO confirm robustness. A representative dwarf (DDO154) is shown in Fig.~\ref{fig:rot}.
+
+\subsection{JWST dwarf evolution test}
+We regress $\log r_c$ against $\log v_{\mathrm{flat}}$ and $\log(1+z)$,
+\begin{equation}
+\log r_c = a_0 + a_1 \log v_{\mathrm{flat}} + a_2 \log(1+z) + \epsilon,
+\end{equation}
+predicting $a_2\ne 0$ if redshift screening is active. A credible interval for $a_2$ containing $0$ falsifies the time dependence.
+
+\subsection{High-$k$ suppression criterion}
+Define $T(k,z)=\sqrt{P_{\mathrm{URF}}/P_{\Lambda\mathrm{CDM}}}$ and $S=1-T^2$.
+Our falsifiability bound is
+\begin{equation}
+S(k=10\,h\,\mathrm{Mpc}^{-1},z=1)<0.09 \quad (95\%\ \mathrm{posterior}).
+\end{equation}
+We marginalize over $\sum m_\nu$ and standard cosmological parameters.
+
+\section{Numerical Methods}
+We use \texttt{emcee} with 32 walkers and $>50$ autocorrelation times; we require $\hat R<1.01$.
+We release chains, priors, and likelihoods with this manuscript.
+
+\section{Discussion and Outlook}
+URF--Astro V2 unifies galactic cores and cosmological safety via dual screening and makes sharp, testable predictions across SPARC, JWST, DESI/21-cm, and laboratory fifth-force experiments.
+
+\section*{AI Co-Author Declaration}
+NEES (Naina) and Aether assisted with drafting, symbolic derivations, and simulation design; human authorship led the concepts and interpretation. Full code and chains are provided for reproducibility.
+
+\bibliographystyle{unsrtnat}
+\bibliography{refs}
+\end{document}

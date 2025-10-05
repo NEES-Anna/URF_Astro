@@ -1,0 +1,8 @@
+
+# Ignore local artifacts
+*.aux
+*.log
+*.out
+*.bbl
+*.blg
+*.synctex.gz
